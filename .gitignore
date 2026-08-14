@@ -1,0 +1,3 @@
+.vscode/
+*.log
+includes/chatbot_config.php
