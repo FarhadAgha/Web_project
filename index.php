@@ -11,12 +11,22 @@
     <h2>Featured Products</h2>
     <div class="product-grid">
         <?php
-        $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC LIMIT 4");
-        if ($result && $result->num_rows > 0) {
+$result = $conn->query("SELECT products.*, categories.name AS category_name FROM products LEFT JOIN categories ON products.category_id = categories.id ORDER BY products.created_at DESC LIMIT 4");        if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="product-card">';
                 echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="product-img-wrap">';
                 echo '<span class="card-badge">' . htmlspecialchars($row['category_name'] ?? 'New') . '</span>';
+                echo '<button class="wishlist-heart" data-id="' . $row['id'] . '">♡</button>';
+                echo '<img src="/gull_boutique/images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['name']) . '">';
+                echo '</a>';
+                echo '<div class="product-info">';
+                echo '<h3><a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '">' . htmlspecialchars($row['name']) . '</a></h3>';
+                echo '<p class="price">$' . htmlspecialchars($row['price']) . '</p>';
+                echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="btn-view">View Details</a>';
+                echo '</div></div>';echo '<div class="product-card">';
+                echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="product-img-wrap">';
+                echo '<span class="card-badge">' . htmlspecialchars($row['category_name'] ?? 'New') . '</span>';
+                echo '<button class="wishlist-heart" data-id="' . $row['id'] . '">♡</button>';
                 echo '<img src="/gull_boutique/images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['name']) . '">';
                 echo '</a>';
                 echo '<div class="product-info">';

@@ -16,6 +16,7 @@
             <li><a href="/gull_boutique/about.php">About</a></li>
             <li><a href="/gull_boutique/products.php">Products</a></li>
             <li><a href="/gull_boutique/contact.php">Contact</a></li>
+            <li><a href="/gull_boutique/wishlist.php">Wishlist ♡</a></li>
         </ul>
         <div class="hamburger" id="hamburger">&#9776;</div>
     </nav>

@@ -4,6 +4,9 @@
 </footer>
 
 <script src="/gull_boutique/js/main.js"></script>
+<a href="https://wa.me/923352730073?text=Hi! I have a question about Gull Boutique." class="whatsapp-btn" target="_blank">
+    📞
+</a>
 <div id="chatbot-widget">
     <button id="chatbot-toggle">💬</button>
     <div id="chatbot-window" class="hidden">
