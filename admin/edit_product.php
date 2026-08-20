@@ -58,7 +58,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name");
                 <?php echo htmlspecialchars($cat['name']); ?>
             </option>
         <?php endwhile; ?>
-    </select>
+        </select>
 
     <label>Description</label>
     <textarea name="description" rows="4"><?php echo htmlspecialchars($product['description']); ?></textarea>
