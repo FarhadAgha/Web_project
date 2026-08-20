@@ -22,7 +22,15 @@
 <section class="featured">
     <div class="product-grid">
         <?php
-        if ($selectedCat > 0) {
+        $searchTerm = trim($_GET['search'] ?? '');
+
+        if ($searchTerm !== '') {
+            $likeTerm = '%' . $searchTerm . '%';
+            $stmt = $conn->prepare("SELECT * FROM products WHERE name LIKE ? ORDER BY created_at DESC");
+            $stmt->bind_param("s", $likeTerm);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        } elseif ($selectedCat > 0) {
             $stmt = $conn->prepare("SELECT * FROM products WHERE category_id = ? ORDER BY created_at DESC");
             $stmt->bind_param("i", $selectedCat);
             $stmt->execute();
@@ -41,7 +49,7 @@
                 echo '</a>';
                 echo '<div class="product-info">';
                 echo '<h3><a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '">' . htmlspecialchars($row['name']) . '</a></h3>';
-                echo '<p class="price">$' . htmlspecialchars($row['price']) . '</p>';
+                echo '<p class="price">Rs. ' . number_format($row['price']) . '</p>';
                 echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="btn-view">View Details</a>';
                 echo '</div></div>';
             }

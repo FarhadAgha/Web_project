@@ -25,7 +25,7 @@ if (!$product) {
     <div class="detail-info">
         <span class="detail-category"><?php echo htmlspecialchars($product['category_name']); ?></span>
         <h1><?php echo htmlspecialchars($product['name']); ?></h1>
-        <p class="detail-price">$<?php echo htmlspecialchars($product['price']); ?></p>
+        <p class="detail-price">Rs. <?php echo number_format($product['price']); ?></p>
         <p class="detail-description"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
         <p class="detail-stock">
             <?php if ($product['stock'] > 0): ?>

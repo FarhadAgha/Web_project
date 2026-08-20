@@ -29,7 +29,7 @@
             <td><img src="/gull_boutique/images/<?php echo htmlspecialchars($row['image']); ?>" alt="" class="table-thumb"></td>
             <td><?php echo htmlspecialchars($row['name']); ?></td>
             <td><?php echo htmlspecialchars($row['category_name']); ?></td>
-            <td>$<?php echo htmlspecialchars($row['price']); ?></td>
+            <td>Rs. <?php echo number_format($row['price']); ?></td>
             <td><?php echo htmlspecialchars($row['stock']); ?></td>
             <td>
                 <a href="edit_product.php?id=<?php echo $row['id']; ?>" class="btn-small btn-edit">Edit</a>

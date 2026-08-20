@@ -57,7 +57,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name");
     <label>Description</label>
     <textarea name="description" rows="4"></textarea>
 
-    <label>Price ($)</label>
+    <label>Price (Rs.)</label>
     <input type="number" name="price" step="0.01" min="0" required>
 
     <label>Stock</label>

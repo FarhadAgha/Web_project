@@ -1,4 +1,16 @@
 <?php include 'includes/header.php'; ?>
+<section class="hero-carousel">
+    <div class="carousel-track" id="carouselTrack">
+        <img src="/gull_boutique/images/hero-1.webp" class="carousel-slide active" alt="Azadi Sale">
+        <img src="/gull_boutique/images/hero-2.webp" class="carousel-slide" alt="Unstitched Collection">
+        <img src="/gull_boutique/images/hero-3.webp" class="carousel-slide" alt="Signature Collection">
+    </div>
+    <div class="carousel-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+    </div>
+</section>
 <?php include 'includes/db.php'; ?>
 
 <section class="hero">
@@ -21,7 +33,7 @@ $result = $conn->query("SELECT products.*, categories.name AS category_name FROM
                 echo '</a>';
                 echo '<div class="product-info">';
                 echo '<h3><a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '">' . htmlspecialchars($row['name']) . '</a></h3>';
-                echo '<p class="price">$' . htmlspecialchars($row['price']) . '</p>';
+                echo '<p class="price">Rs. ' . number_format($row['price']) . '</p>';
                 echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="btn-view">View Details</a>';
                 echo '</div></div>';echo '<div class="product-card">';
                 echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="product-img-wrap">';

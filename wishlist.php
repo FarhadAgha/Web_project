@@ -30,7 +30,7 @@
                 echo '</a>';
                 echo '<div class="product-info">';
                 echo '<h3><a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '">' . htmlspecialchars($row['name']) . '</a></h3>';
-                echo '<p class="price">$' . htmlspecialchars($row['price']) . '</p>';
+                echo '<p class="price">Rs. ' . number_format($row['price']) . '</p>';
                 echo '<a href="/gull_boutique/product_detail.php?id=' . $row['id'] . '" class="btn-view">View Details</a>';
                 echo '</div></div>';
             }
