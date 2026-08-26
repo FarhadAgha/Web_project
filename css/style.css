@@ -1080,3 +1080,254 @@ body {
         aspect-ratio: 4 / 5;
     }
 }
+/* RATINGS & REVIEWS */
+.detail-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 15px;
+}
+
+.stars {
+    color: var(--pink-deep);
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.rating-text {
+    font-size: 13px;
+    color: #777;
+}
+
+.reviews-section {
+    max-width: 700px;
+    margin: 20px auto 60px;
+    padding: 0 20px;
+}
+
+.reviews-section h2 {
+    color: var(--pink-deep);
+    margin-bottom: 20px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 30px;
+}
+
+.review-form label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.review-form button {
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.review-item {
+    background: white;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #999;
+}
+/* CATEGORY SCROLL SECTION */
+.category-scroll-section {
+    padding: 50px 0;
+    background-color: #fff9fb;
+    overflow: hidden;
+}
+
+.category-scroll-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    padding: 0 40px;
+}
+
+.category-scroll-header h2 {
+    font-size: 26px;
+    color: var(--text-dark);
+}
+
+.category-scroll-logo {
+    height: 32px;
+    width: auto;
+}
+
+.category-scroll-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollCategories 30s linear infinite;
+}
+
+.category-scroll-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollCategories {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.category-scroll-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 220px;
+    height: 300px;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.category-scroll-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.category-scroll-card:hover img {
+    transform: scale(1.08);
+}
+
+.category-scroll-card span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .category-scroll-card {
+        width: 160px;
+        height: 220px;
+    }
+}
+/* TESTIMONIALS */
+.testimonials-section {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: var(--pink-light);
+}
+
+.testimonials-section h2 {
+    margin-bottom: 35px;
+    font-size: 28px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+.testimonial-card .stars {
+    color: var(--pink-deep);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+/* NEWSLETTER */
+.newsletter-section {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: var(--text-dark);
+    color: white;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 10px;
+}
+
+.newsletter-section p {
+    margin-bottom: 25px;
+    color: #eec9dc;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 450px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+}
+
+.newsletter-form button {
+    background-color: var(--pink-deep);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background-color: #e04bb5;
+}

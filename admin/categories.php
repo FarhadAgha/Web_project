@@ -4,7 +4,6 @@
 $error = '';
 $success = '';
 
-// Handle Add
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_category'])) {
     $name = trim($_POST['name']);
     if ($name) {
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_category'])) {
     }
 }
 
-// Handle Edit
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_category'])) {
     $id = intval($_POST['id']);
     $name = trim($_POST['name']);
@@ -44,8 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_category'])) {
 <table class="admin-table">
     <thead>
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th># of Products</th>
+            <th>Upload Image</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -57,17 +57,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_category'])) {
         while ($cat = $cats->fetch_assoc()):
         ?>
         <tr>
-            <form method="POST" action="categories.php">
-                <td>
+            <td>
+                <?php if ($cat['image']): ?>
+                    <img src="/gull_boutique/images/<?php echo htmlspecialchars($cat['image']); ?>" class="table-thumb">
+                <?php else: ?>
+                    <span style="color:#999; font-size:12px;">No image</span>
+                <?php endif; ?>
+            </td>
+            <td>
+                <form method="POST" action="categories.php" style="display:inline;">
                     <input type="hidden" name="id" value="<?php echo $cat['id']; ?>">
                     <input type="text" name="name" value="<?php echo htmlspecialchars($cat['name']); ?>" style="padding:6px; border:1px solid #ddd; border-radius:6px;">
-                </td>
-                <td><?php echo $cat['product_count']; ?></td>
-                <td>
                     <button type="submit" name="edit_category" class="btn-small btn-edit">Save</button>
-            </form>
-                    <a href="delete_category.php?id=<?php echo $cat['id']; ?>" class="btn-small btn-delete" onclick="return confirm('Delete this category? Products using it will need reassigning.');">Delete</a>
-                </td>
+                </form>
+            </td>
+            <td><?php echo $cat['product_count']; ?></td>
+            <td>
+                <form method="POST" action="upload_category_image.php" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $cat['id']; ?>">
+                    <input type="file" name="image" accept="image/*" required style="max-width:160px;">
+                    <button type="submit" class="btn-small btn-edit">Upload</button>
+                </form>
+            </td>
+            <td>
+                <a href="delete_category.php?id=<?php echo $cat['id']; ?>" class="btn-small btn-delete" onclick="return confirm('Delete this category? Products using it will need reassigning.');">Delete</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </tbody>
