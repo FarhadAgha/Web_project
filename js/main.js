@@ -60,3 +60,18 @@ if (slides.length > 0) {
         });
     });
 }
+const revealTargets = document.querySelectorAll('.hero, .featured, .about-teaser, .testimonials-section, .newsletter-section, .category-scroll-section, .product-detail, .reviews-section');
+revealTargets.forEach(el => el.classList.add('reveal'));
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+revealTargets.forEach(el => observer.observe(el));
+setTimeout(() => {
+    revealTargets.forEach(el => el.classList.add('visible'));
+}, 1000);
