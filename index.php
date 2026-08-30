@@ -40,6 +40,7 @@ include 'includes/header.php';
 <section class="category-scroll-section">
     <div class="category-scroll-header">
         <h2>Shop By Category</h2>
+        <div class="section-divider"><span>✦</span></div>
         <img src="/gull_boutique/images/logo.png" alt="Gull Boutique" class="category-scroll-logo">
     </div>
     <div class="category-scroll-track">
@@ -62,6 +63,7 @@ include 'includes/header.php';
 
 <section class="featured">
     <h2>Featured Products</h2>
+    <div class="section-divider"><span>✦</span></div>
     <div class="product-grid">
         <?php
         $result = $conn->query("SELECT products.*, categories.name AS category_name FROM products LEFT JOIN categories ON products.category_id = categories.id ORDER BY products.created_at DESC LIMIT 8");

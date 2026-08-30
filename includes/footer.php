@@ -2,7 +2,7 @@
     <div class="footer-columns">
         <div class="footer-col">
             <h4>Gull Boutique</h4>
-            <p>We are located at Peoples Colony No. 2, Shop # 11, Muhammadi Chowk, Faisalabad.</p>
+            <p>We are located at Cut peaice galli No, 3  Masjid road, Quetta.</p>
             <p>Call us: <a href="tel:03058973929">0305-8973929</a></p>
             <p>Email: <a href="mailto:infogullboutiquepk@gmail.com">infogullboutiquepk@gmail.com</a></p>
         </div>

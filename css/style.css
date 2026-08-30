@@ -1,8 +1,28 @@
- html, body { overflow-x: hidden; max-width: 100%; } img { max-width: 100%; }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Segoe+UI:wght@400;600&display=swap');
+html, body { overflow-x: hidden; max-width: 100%; } img { max-width: 100%; }
 :root {
     --pink-light: #FFD1DC;
     --pink-deep: #FF5CCD;
     --text-dark: #33202b;
+    --font-heading: 'Playfair Display', Georgia, serif;
+}
+h1, h2, h3,
+.hero h1,
+.page-header h1,
+.featured h2,
+.about-teaser h2,
+.about-story h2,
+.about-mission h2,
+.about-values h2,
+.testimonials-section h2,
+.newsletter-section h2,
+.category-scroll-header h2,
+.value-card h3,
+.product-info h3,
+.detail-info h1,
+.reviews-section h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
 }
 /* SCROLL REVEAL */
 .reveal {
@@ -1193,7 +1213,8 @@ body {
 }
 
 .category-scroll-logo {
-    height: 32px;
+    height: 45px;
+    margin-top: 4px;
     width: auto;
 }
 
@@ -1405,4 +1426,88 @@ body {
 /* SMOOTHER SECTION TRANSITIONS */
 .hero, .featured, .about-teaser, .testimonials-section, .newsletter-section, .category-scroll-section {
     scroll-margin-top: 80px;
+}
+/* LUXURY POLISH */
+.hero h1 {
+    font-size: 46px;
+    letter-spacing: 0.5px;
+}
+
+.hero p {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #6b5a61;
+}
+
+.btn-primary {
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 18px rgba(255, 92, 205, 0.35);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(255, 92, 205, 0.45);
+}
+
+.product-card {
+    box-shadow: 0 2px 10px rgba(51, 32, 43, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(51, 32, 43, 0.12);
+}
+
+.value-card,
+.testimonial-card,
+.stat-card {
+    box-shadow: 0 4px 20px rgba(51, 32, 43, 0.06);
+    border: 1px solid rgba(255, 92, 205, 0.08);
+}
+
+/* SECTION DIVIDERS */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto 10px;
+    max-width: 200px;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--pink-deep), transparent);
+}
+
+.section-divider span {
+    color: var(--pink-deep);
+    font-size: 18px;
+}
+
+/* MORE BREATHING ROOM */
+.featured, .about-teaser, .testimonials-section, .newsletter-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.featured h2, .testimonials-section h2, .newsletter-section h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* REFINED PRICE TAG */
+.product-info .price {
+    font-family: var(--font-heading);
+    font-size: 18px;
+}
+
+.detail-price {
+    font-family: var(--font-heading);
 }
