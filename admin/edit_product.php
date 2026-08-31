@@ -27,8 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetPath = '../images/' . $imageName;
         $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
         if (in_array($_FILES['image']['type'], $allowedTypes)) {
-            move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
-        }
+    if (!move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+        $imageName = $product['image']; // keep the old image if upload fails
+    }
+}
     }
 
     $stmt2 = $conn->prepare("UPDATE products SET category_id=?, name=?, description=?, price=?, stock=?, image=? WHERE id=?");

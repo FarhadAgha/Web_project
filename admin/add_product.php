@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $error = "Invalid image type. Use JPG, PNG, WEBP, or GIF.";
         }
+        if (!$error && $name && $category_id && $price >= 0) {
     }
 
     if (!$error && $name && $category_id && $price >= 0) {

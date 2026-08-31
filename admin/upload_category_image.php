@@ -14,11 +14,12 @@ if ($id > 0 && isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
     $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
     if (in_array($_FILES['image']['type'], $allowedTypes)) {
-        move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
         $stmt = $conn->prepare("UPDATE categories SET image = ? WHERE id = ?");
         $stmt->bind_param("si", $imageName, $id);
         $stmt->execute();
     }
+}
 }
 
 header("Location: categories.php");
