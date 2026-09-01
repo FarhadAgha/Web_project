@@ -81,4 +81,4 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name");
     <button type="submit" class="btn-primary">Update Product</button>
 </form>
 
-<?php include '../includes/admin_footer.php'; ?>
+<?php include '../includes/admin_footer.php'; ?> 
