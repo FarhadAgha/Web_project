@@ -30,11 +30,11 @@
         <p>&copy; <?php echo date("Y"); ?> Gull Boutique. All rights reserved.</p>
     </div>
 </footer>
-<footer class="site-footer">
-    <p>&copy; <?php echo date("Y"); ?> Gull Boutique. All rights reserved.</p>
-    <p>Made with love for the modern woman.</p>
-</footer>
 
+<?php include_once __DIR__ . '/../includes/chatbot_config.php'; ?>
+<script>
+const GULL_GEMINI_KEY = '<?php echo GEMINI_API_KEY; ?>';
+</script>
 <script src="/gull_boutique/js/main.js"></script>
 <a href="https://wa.me/923352730073?text=Hi! I have a question about Gull Boutique." class="whatsapp-btn" target="_blank">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="white">
@@ -73,6 +73,37 @@ function addMessage(text, sender) {
     messages.scrollTop = messages.scrollHeight;
 }
 
+async function getGeminiReply(userMsg) {
+    const systemPrompt = "You are a friendly assistant for Gull Boutique, an online women's clothing store with categories: Wedding Guest, Graduation, Eid Special, Office Wear, Party Night, and Casual Home. Answer questions about the store helpfully and briefly (2-3 sentences max). If asked about specific stock, prices, or orders, politely say you'd recommend checking the Products page or contacting the store directly. Keep responses warm and on-brand for a boutique.";
+
+    const url = "https://generativelanguage.googleapis.com/v1beta/interactions";
+    const data = {
+        model: "gemini-3.6-flash",
+        system_instruction: systemPrompt,
+        input: userMsg
+    };
+
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': GULL_GEMINI_KEY
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.steps) {
+        for (const step of result.steps) {
+            if (step.type === 'model_output' && step.content && step.content[0] && step.content[0].text) {
+                return step.content[0].text;
+            }
+        }
+    }
+    return "Sorry, I'm having trouble responding right now. Please try again or use our Contact page.";
+}
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const msg = input.value.trim();
@@ -83,14 +114,9 @@ form.addEventListener('submit', async (e) => {
     addMessage('Typing...', 'bot typing');
 
     try {
-        const res = await fetch('/gull_boutique/chatbot_handler.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: msg })
-        });
-        const data = await res.json();
+        const reply = await getGeminiReply(msg);
         document.querySelector('.typing').remove();
-        addMessage(data.reply, 'bot');
+        addMessage(reply, 'bot');
     } catch (err) {
         document.querySelector('.typing').remove();
         addMessage('Something went wrong. Please try again.', 'bot');
