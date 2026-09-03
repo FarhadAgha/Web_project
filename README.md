@@ -30,7 +30,7 @@ A full-stack e-commerce web application built for a women's clothing boutique, f
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Front-end:** HTML5, CSS3, JavaScript
 - **Back-end:** PHP
