@@ -7,7 +7,7 @@ A full-stack e-commerce web application built for a women's clothing boutique, f
 
 ---
 
-## Features
+## Features 
 
 ### Customer-Facing
 - Responsive Home page with auto-scrolling hero banner
